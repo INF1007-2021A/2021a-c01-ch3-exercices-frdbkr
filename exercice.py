@@ -5,31 +5,39 @@
 import math
 
 def square_root(a: float) -> float:
-    return 0.0
-
+    return math.sqrt(a)
 
 def square(a: float) -> float:
-    return 0.0
+    return pow(a,2)
 
 
 def average(a: float, b: float, c: float) -> float:
-    return 0.0
+    return (a+b+c)/3
 
 
 def to_radians(angle_degs: float, angle_mins: float, angle_secs: float) -> float:
-    return 0.0
+    mesureRadiant=angle_degs + (angle_mins/60) + angle_secs/3600
+    return (math.pi*mesureRadiant)/180
 
 
 def to_degrees(angle_rads: float) -> tuple:
-    return 0.0, 0.0, 0.0
+    degres = (180*angle_rads)/math.pi
+    nbEntierDegres= degres - degres % 1
+
+    minute = (degres - nbEntierDegres) * 60
+    nbEntierMinute =minute - minute%1
+
+    seconde = (minute-nbEntierMinute) * 60
+
+    return nbEntierDegres, nbEntierMinute, seconde
 
 
 def to_celsius(temperature: float) -> float:
-    return 0.0
+    return (5*temperature+160)/9
 
 
 def to_farenheit(temperature: float) -> float:
-    return 0.0
+    return 1.8*temperature + 32
 
 
 def main() -> None:
@@ -39,7 +47,7 @@ def main() -> None:
 
     print(f"Moyenne des nombres 2, 4, 6: {average(2, 4, 6)}")
 
-    print(f"Conversion de 100 degres, 2 minutes et 45 secondes en radians: {to_radians(180, 2, 45)}")
+    print(f"Conversion de 180 degres, 2 minutes et 45 secondes en radians: {to_radians(180, 2, 45)}")
     
     degrees, minutes, seconds = to_degrees(1.0)
     print(f"Conversion de 1 radian en degres: {degrees} degres, {minutes} minutes et {seconds} secondes")
